@@ -1,5 +1,6 @@
 package arrays;
 
+import java.util.Arrays;
 import java.util.Comparator;
 
 public class MyArrayList<T extends Comparable<T>> {
@@ -23,6 +24,12 @@ public class MyArrayList<T extends Comparable<T>> {
     public void add(T item) {
         list[size] = item;
         size++;
+        if (size > list.length - 4){
+            T[] listCopy = Arrays.copyOf(list,list.length * 2);
+            list = (T[]) new Comparable[listCopy.length];
+            list = listCopy;
+
+        }
     }
 
     private void checkIndex(int index) {
@@ -59,6 +66,12 @@ public class MyArrayList<T extends Comparable<T>> {
 
         list[index] = item;
         size++;
+        if (size > list.length - 4){
+            T[] listCopy = Arrays.copyOf(list,list.length * 2);
+            list = (T[]) new Comparable[listCopy.length];
+            list = listCopy;
+
+        }
     }
 
     public T get(int index) {
@@ -146,12 +159,42 @@ public class MyArrayList<T extends Comparable<T>> {
         }
     }
 
+    public void insertionSort(Comparator<T> comparator) {
+        T key;
+        for (int i = 1; i < size; i++) {
+            int j = i;
+            key = list[i];
+            while (j > 0 && comparator.compare(key, list[j - 1]) < 0) {
+                list[j] = list[j - 1];
+                j--;
+            }
+            list[j] = key;
+        }
+    }
+
     public void bubbleSort() {
         boolean isSwap;
         for (int i = size - 1; i > 0; i--) {
             isSwap = false;
             for (int j = 0; j < i; j++) {
                 if (less(list[j + 1], list[j])) {
+                    swap(j, j + 1);
+                    isSwap = true;
+                }
+            }
+            if (!isSwap) {
+                System.out.println("break " + i);
+                break;
+            }
+        }
+    }
+
+    public void bubbleSort(Comparator<T> comparator) {
+        boolean isSwap;
+        for (int i = size - 1; i > 0; i--) {
+            isSwap = false;
+            for (int j = 0; j < i; j++) {
+                if (comparator.compare(list[j + 1], list[j]) < 0) {
                     swap(j, j + 1);
                     isSwap = true;
                 }
