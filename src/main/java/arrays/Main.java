@@ -5,7 +5,7 @@ import java.util.Random;
 public class Main {
     public static void main(String[] args) {
         Random rand = new Random();
-        int bigCapacity = 10_000;
+        int bigCapacity = 1_000_000;
         MyArrayList<Integer> malForBubble = new MyArrayList<>();
         MyArrayList<Integer> malForSelection = new MyArrayList<>();
         MyArrayList<Integer> malForInsertion = new MyArrayList<>();
