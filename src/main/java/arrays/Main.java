@@ -6,9 +6,9 @@ public class Main {
     public static void main(String[] args) {
         Random rand = new Random();
         int bigCapacity = 1_000_000;
-        MyArrayList<Integer> malForBubble = new MyArrayList<>(bigCapacity);
-        MyArrayList<Integer> malForSelection = new MyArrayList<>(bigCapacity);
-        MyArrayList<Integer> malForInsertion = new MyArrayList<>(bigCapacity);
+        MyArrayList<Integer> malForBubble = new MyArrayList<>();
+        MyArrayList<Integer> malForSelection = new MyArrayList<>();
+        MyArrayList<Integer> malForInsertion = new MyArrayList<>();
         for (int i = 0; i < bigCapacity; i++) {
             malForBubble.add(rand.nextInt(bigCapacity));
             malForSelection.add(rand.nextInt(bigCapacity));
