@@ -26,6 +26,7 @@ public class MyDequeue<T>{
         }
         list[end] = value;
 
+
     }
     public void pushFront(T value){
         list[begin] = value;
