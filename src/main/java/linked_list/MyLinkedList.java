@@ -37,6 +37,21 @@ public class MyLinkedList <T> implements Iterable<T>{
             return current.getValue();
         }
 
+        @Override
+        public void remove(){
+            if (current.getNext() != null && current.getPrev() != null){
+                current.getPrev().setNext(current.getNext());
+                current.getNext().setPrev(current.getPrev());
+                size--;
+            }
+            if (current.getNext() == null && current.getPrev() != null){
+                removeLast();
+            }
+            if (current.getPrev() == null && current.getNext() != null){
+                removeFirst();
+            }
+        }
+
     }
 
     private class Node {
