@@ -41,5 +41,14 @@ public class Main {
         for (int i = 0; i < 3; i++) {
             System.out.println(mq.dequeue());
         }
+
+        MyStack<String> ms = new MyStack<>();
+        ms.push("rty");
+        ms.push("fgh");
+        ms.push("vbn");
+
+        for (int i = 0; i < 3; i++) {
+            System.out.println(ms.pop());
+        }
     }
 }
