@@ -4,7 +4,8 @@ public class Main {
     public static void main(String[] args) {
         MyTreeMap<Integer, String> map = new MyTreeMap<Integer, String>();
 
-
+        HomeWork myHW = new HomeWork();
+        myHW.homework();
 //        map.put(5,"five");
 //        map.put(1,"one");
 //        map.put(2,"two");
