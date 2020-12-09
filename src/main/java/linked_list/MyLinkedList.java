@@ -1,6 +1,7 @@
 package linked_list;
 
 import java.util.Iterator;
+import java.util.ListIterator;
 import java.util.NoSuchElementException;
 
 public class MyLinkedList <T> implements Iterable<T>{
@@ -14,9 +15,9 @@ public class MyLinkedList <T> implements Iterable<T>{
     }
 
 
-//    public ListIterator<T> listIterator() {
-//        return null;
-//    }
+    public ListIterator<T> listIterator() {
+        return null;
+    }
 
     public MyLinkedList() {
         first = null;
