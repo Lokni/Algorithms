@@ -2,11 +2,11 @@ package hash_map;
 
 import java.util.LinkedList;
 
-public class ChainingHashMap <Key, Value>{
+public class ChainingHashMap<Key, Value> {
     private int capacity = 7;
     private int size;
 
-    private LinkedList<Node>[] st;
+    private LinkedList<Node<Key, Value>>[] st;
 
     public ChainingHashMap() {
         st = new LinkedList[capacity];
@@ -15,7 +15,7 @@ public class ChainingHashMap <Key, Value>{
         }
     }
 
-    private class Node {
+    private class Node<Key, Value> {
         Key key;
         Value value;
 
@@ -50,20 +50,20 @@ public class ChainingHashMap <Key, Value>{
     public void put(Key key, Value value) {
         checkKeyNotNull(key);
         int i = hash(key);
-        for (Node node : st[i]) {
+        for (Node<Key, Value> node : st[i]) {
             if (key.equals(node.key)) {
                 node.value = value;
                 return;
             }
         }
-        st[i].addLast(new Node(key, value));
+        st[i].addLast(new Node<Key, Value>(key, value));
         size++;
     }
 
     public Value get(Key key) {
         checkKeyNotNull(key);
         int i = hash(key);
-        for (Node node : st[i]) {
+        for (Node<Key, Value> node : st[i]) {
             if (key.equals(node.key)) {
                 return node.value;
             }
@@ -71,11 +71,23 @@ public class ChainingHashMap <Key, Value>{
         return null;
     }
 
+    public Key remove (Key key){
+        checkKeyNotNull(key);
+        int j = hash(key);
+        for (int i = 0; i < st[j].size(); i++) {
+                st[j].remove(i);
+                size--;
+        }
+        return key;
+    }
+
+
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
         for (int i = 0; i < capacity; i++) {
-            for (Node node : st[i]) {
+            for (Node<Key, Value> node : st[i]) {
                 sb.append(node.key).append(" ");
             }
             sb.append(System.lineSeparator());
